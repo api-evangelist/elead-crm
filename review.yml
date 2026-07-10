@@ -1,0 +1,130 @@
+aid: elead-crm
+name: Elead
+review:
+  question: Does Elead expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-10'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Elead's Vehicle Sales APIs (Sales
+    Opportunities, Sales Customers, Sales Activities, Product Reference Data)
+    are request/response REST over HTTPS, delivered through the CDK Fortellis
+    gateway. There is no documented server-push transport (WebSocket or SSE) on
+    Elead's own API. CDK's broader CRM catalog references an "Async - receive
+    real-time record updates" capability, but that is delivered as
+    Fortellis webhook/event subscriptions (server-to-endpoint HTTP callbacks),
+    not a WebSocket surface Elead exposes to clients, so there is nothing to
+    model as an Elead AsyncAPI document.
+findings:
+  summary: |
+    Elead does not publish a documented public WebSocket API. Elead (eLEAD /
+    Elead CRM, now part of CDK Global) offers partner-gated Vehicle Sales REST
+    APIs through the CDK Fortellis Automotive Commerce Exchange. The documented
+    APIs - Sales Opportunities, Sales Customers, and Product Reference Data
+    (plus a Sales Activities API described in CDK product material) - are pure
+    request/response REST over HTTPS on the Fortellis gateway
+    (https://api.fortellis.io) under the /sales/v1/elead path prefix. Requests
+    are authenticated with Fortellis-issued client credentials (client_id +
+    client_secret) plus a per-dealer Subscription-Id and a Request-Id
+    correlation header. No realtime, bidirectional, or streaming WebSocket
+    (ws:// or wss://) endpoint is documented on Elead's own API.
+  accessModel: |
+    Access is partner/certification-gated, not open self-service. To call the
+    APIs a developer must be a Fortellis user, create a Fortellis "solution" to
+    generate client id and secret, and have the dealership activate/subscribe
+    the app to their Elead instance (supplying the Subscription-Id). The APIs
+    are marketed to dealers and certified vendor partners; there is no public
+    free tier or self-serve signup, and pricing is handled through
+    CDK/Fortellis partner agreements (contact sales).
+  endpointsConfirmed: |
+    The Sales Opportunities, Sales Customers, and Product Reference Data
+    operations below are confirmed from CDK Global's Fortellis connector
+    reference (mirrored in Microsoft Learn connector docs) and the Fortellis
+    API directory. The Sales Activities endpoints are endpointsModeled - CDK
+    describes the capability (create/complete activities, appointments, emails,
+    activity history) but a public operation-level reference was not located, so
+    those paths are inferred and marked as modeled, not fabricated as fact.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.fortellis.io/sales/v1/elead
+      documented: true
+      note: Vehicle Sales APIs on the CDK Fortellis gateway. Client credentials plus Subscription-Id and Request-Id headers.
+    - protocol: Webhook
+      scheme: https
+      documented: partial
+      note: CDK CRM references an "Async / real-time record updates" capability delivered via Fortellis event subscriptions (HTTP callbacks). Not an Elead-hosted WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Elead Vehicle Sales APIs or the Fortellis directory as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://api.fortellis.io/sales/v1/elead/customers
+    - GET    https://api.fortellis.io/sales/v1/elead/customers/{customerId}
+    - PUT    https://api.fortellis.io/sales/v1/elead/customers/{customerId}
+    - GET    https://api.fortellis.io/sales/v1/elead/customers/search
+    - GET    https://api.fortellis.io/sales/v1/elead/customers/{customerId}/vehicles
+    - GET    https://api.fortellis.io/sales/v1/elead/opportunities/search
+    - GET    https://api.fortellis.io/sales/v1/elead/opportunities/searchDelta
+    - POST   https://api.fortellis.io/sales/v1/elead/opportunities
+    - POST   https://api.fortellis.io/sales/v1/elead/opportunities/{opportunityId}/comments
+    - POST   https://api.fortellis.io/sales/v1/elead/opportunities/{opportunityId}/salespeople
+    - DELETE https://api.fortellis.io/sales/v1/elead/opportunities/{opportunityId}/salespeople/{salespersonId}
+    - POST   https://api.fortellis.io/sales/v1/elead/opportunities/{opportunityId}/tradeIns
+    - DELETE https://api.fortellis.io/sales/v1/elead/opportunities/tradeIns/{tradeInId}
+    - POST   https://api.fortellis.io/sales/v1/elead/opportunities/{opportunityId}/vehiclesSought
+    - DELETE https://api.fortellis.io/sales/v1/elead/opportunities/vehiclesSought/{vehicleSoughtId}
+    - POST   https://api.fortellis.io/sales/v1/elead/opportunities/{opportunityId}/email
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/opportunitySources
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/opportunitySubSources
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/opportunityStatuses
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/salesSteps
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/positions
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/employees
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/emails
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/vehicles/classes
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/vehicles/years
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/vehicles/makes
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/vehicles/models
+    - GET    https://api.fortellis.io/sales/v1/elead/reference/vehicles/trims
+  endpointsModeled:
+    - POST   https://api.fortellis.io/sales/v1/elead/activities
+    - GET    https://api.fortellis.io/sales/v1/elead/activities/{activityId}
+    - POST   https://api.fortellis.io/sales/v1/elead/activities/{activityId}/complete
+    - GET    https://api.fortellis.io/sales/v1/elead/activities/history
+  endpointsModeledNote: |
+    The activities paths above are inferred from CDK/Elead product descriptions
+    ("create scheduled and completed activities, appointments and emails; query
+    activity history with comments"). Exact operation names, paths, and
+    payloads were not confirmed against a public reference and should be
+    verified in the Fortellis directory before implementation.
+sources:
+  - url: https://learn.microsoft.com/en-us/connectors/cdkeleadsalesopportunities/
+    type: Documentation
+    note: Full operation-level reference for the Elead Sales Opportunities API (mirror of the Fortellis spec). All REST; no WebSocket.
+  - url: https://learn.microsoft.com/en-us/connectors/cdkeleadsalescustomers/
+    type: Documentation
+    note: Full operation-level reference for the Elead Sales Customers API. Confirms /sales/v1/elead/customers path and Fortellis client credential + Subscription-Id auth.
+  - url: https://learn.microsoft.com/en-us/connectors/cdkeleadproductreferencedata/
+    type: Documentation
+    note: Full operation-level reference for the Elead Product Reference Data API.
+  - url: https://apidocs.fortellis.io/
+    type: APIReference
+    note: Fortellis API directory hosting the Elead Vehicle Sales API specs.
+  - url: https://www2.cdkglobal.com/api-solutions-crm
+    type: Documentation
+    note: CDK CRM API overview - Sales Bundle (Opportunity, Activities, Customer), Product Reference, Direct Post, and Async capabilities.
+  - url: https://www.businesswire.com/news/home/20210209005197/en/CDK-Global-Launches-Advanced-CRM-Data-Capabilities-with-Four-New-Elead-APIs
+    type: PressRelease
+    note: CDK Global launch of four Elead Vehicle Sales APIs on Fortellis.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Elead's public API is partner-gated
+    request/response REST delivered through the CDK Fortellis gateway. No
+    AsyncAPI document was created because there is no Elead-hosted server-push
+    transport to model; any "real-time" behavior is delivered via Fortellis
+    webhook/event subscriptions carried over HTTP, out of scope for an Elead
+    AsyncAPI document.

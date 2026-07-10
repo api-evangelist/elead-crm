@@ -1,0 +1,83 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Elead
+providerId: elead-crm
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- CRM
+- Automotive
+- Fortellis
+- Partner
+- Plans
+description: >-
+  Elead does not publish open, self-service API pricing. The Vehicle Sales APIs
+  are distributed through the CDK Fortellis Automotive Commerce Exchange and are
+  available to dealers running Elead CRM and to certified vendor partners.
+  Access is gated: a developer registers on Fortellis, creates a solution to
+  obtain client credentials, and the dealership activates a per-dealer
+  subscription. Commercial terms (any per-transaction, per-dealer, or program
+  fees) are negotiated through CDK/Fortellis partner agreements rather than
+  listed publicly. Treat all tiers below as contact-sales.
+notes: >-
+  No public price points were found for the Elead Vehicle Sales APIs as of the
+  review date. Verify current partner-program terms and any Fortellis
+  marketplace fees directly with CDK Global / Fortellis during reconciliation.
+sources:
+- https://www.eleadcrm.com
+- https://www2.cdkglobal.com/api-solutions-crm
+- https://apidocs.fortellis.io/
+- https://learn.microsoft.com/en-us/connectors/cdkeleadsalescustomers/
+plans:
+- id: elead-fortellis-developer
+  name: Fortellis Developer / Sandbox
+  type: free
+  description: >-
+    Register on Fortellis and create a solution to obtain client_id and
+    client_secret for building and testing against the Elead Vehicle Sales
+    APIs. Production calls still require a dealer to activate a subscription.
+  entries:
+  - label: Developer Access
+    name: developer_access
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: no public price (Fortellis registration required)
+    userMultiplied: false
+  elements:
+  - name: Fortellis Solution Registration
+  - name: Client Credentials
+  - name: Sandbox Testing
+- id: elead-dealer-partner
+  name: Dealer / Vendor Partner Subscription
+  type: enterprise
+  description: >-
+    Production access to the Elead Vehicle Sales APIs for a specific dealership,
+    activated by that dealer against their Elead CRM instance and scoped by a
+    Subscription-Id. Marketed to dealers and certified vendor partners; pricing
+    handled through CDK/Fortellis agreements.
+  entries:
+  - label: Partner Agreement
+    name: partner_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Per-Dealer Subscription
+  - name: Sales Opportunities API
+  - name: Sales Customers API
+  - name: Sales Activities API
+  - name: Product Reference Data API
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

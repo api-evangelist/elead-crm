@@ -1,0 +1,137 @@
+aid: elead-crm
+url: https://raw.githubusercontent.com/api-evangelist/elead-crm/refs/heads/main/apis.yml
+name: Elead
+kind: company
+description: >-
+  Elead (eLEAD / Elead CRM) is an automotive dealership CRM for sales, BDC, and
+  service, now part of CDK Global. Elead exposes a set of partner-gated Vehicle
+  Sales REST APIs - Sales Opportunities, Sales Customers, Sales Activities, and
+  Product Reference Data - published through the CDK Fortellis Automotive
+  Commerce Exchange. The APIs let certified software providers and dealers
+  search and manage prospects/customers, sales opportunities (leads), vehicles
+  of interest and trade-ins, sales teams, and activities inside Elead CRM.
+  Access is not open self-service - developers must be Fortellis users, create a
+  Fortellis solution to obtain client credentials, and have the dealer activate
+  the subscription. There is no public WebSocket API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- CRM
+- Automotive
+- Dealership
+- Sales
+- Leads
+- Fortellis
+- CDK Global
+created: '2026-07-10'
+modified: '2026-07-10'
+specificationVersion: '0.19'
+apis:
+- aid: elead-crm:elead-crm-sales-opportunities-api
+  name: Elead Sales Opportunities API
+  tags:
+  - Opportunities
+  - Leads
+  - Sales
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidocs.fortellis.io/specs/3c6d6b40-7215-4a81-a087-4f956bb36ec9
+  baseURL: https://api.fortellis.io/sales/v1/elead
+  properties:
+  - url: https://learn.microsoft.com/en-us/connectors/cdkeleadsalesopportunities/
+    type: Documentation
+  - url: https://apidocs.fortellis.io/specs/3c6d6b40-7215-4a81-a087-4f956bb36ec9
+    type: APIReference
+  - url: openapi/elead-crm-openapi.yml
+    type: OpenAPI
+  description: >-
+    Search and retrieve existing sales opportunities (leads) in Elead CRM by
+    date range, delta date, or customer Id, and create new opportunities for
+    existing customers. Manage vehicles of interest and trade-ins, add
+    comments, reassign the primary salesperson or BDC agent, add and remove
+    sales-team members, update sub-status and sales steps, and send emails that
+    log a corresponding activity. Base host is the Fortellis gateway;
+    path prefix is /sales/v1/elead/opportunities.
+- aid: elead-crm:elead-crm-sales-customers-api
+  name: Elead Sales Customers API
+  tags:
+  - Customers
+  - Prospects
+  - Contacts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidocs.fortellis.io/specs/ba092364-accc-4ad9-865f-fac51c34cdb1
+  baseURL: https://api.fortellis.io/sales/v1/elead
+  properties:
+  - url: https://learn.microsoft.com/en-us/connectors/cdkeleadsalescustomers/
+    type: Documentation
+  - url: https://apidocs.fortellis.io/specs/ba092364-accc-4ad9-865f-fac51c34cdb1
+    type: APIReference
+  - url: openapi/elead-crm-openapi.yml
+    type: OpenAPI
+  description: >-
+    Manage prospect and customer records inside Elead CRM. Create a customer
+    (returning the Elead customer Id), update contact details, retrieve a
+    customer by Id, search by first name, last name, phone number, or email
+    address, and retrieve a customer's owned vehicles. Contact details cover
+    names, business flags, multiple emails and phones with contact
+    preferences, and postal address. Path prefix is /sales/v1/elead/customers.
+- aid: elead-crm:elead-crm-sales-activities-api
+  name: Elead Sales Activities API
+  tags:
+  - Activities
+  - Appointments
+  - Tasks
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidocs.fortellis.io/
+  baseURL: https://api.fortellis.io/sales/v1/elead
+  properties:
+  - url: https://www2.cdkglobal.com/api-solutions-crm
+    type: Documentation
+  - url: https://apidocs.fortellis.io/
+    type: APIReference
+  - url: openapi/elead-crm-openapi.yml
+    type: OpenAPI
+  description: >-
+    Create scheduled and completed sales activities (including emails and
+    appointments) tied to an opportunity, complete activities and record
+    outcomes, and query sales-activity history with comments in Elead CRM
+    (CDK CRM). Endpoints for this API are modeled from CDK/Elead product
+    descriptions rather than a public reference; see endpointsModeled in
+    review.yml. Path prefix is /sales/v1/elead/activities.
+- aid: elead-crm:elead-crm-product-reference-data-api
+  name: Elead Product Reference Data API
+  tags:
+  - Reference Data
+  - Lookups
+  - Vehicles
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidocs.fortellis.io/specs/8bbbe60f-b382-4315-8d19-ba48a64b2ab3
+  baseURL: https://api.fortellis.io/sales/v1/elead
+  properties:
+  - url: https://learn.microsoft.com/en-us/connectors/cdkeleadproductreferencedata/
+    type: Documentation
+  - url: https://apidocs.fortellis.io/specs/8bbbe60f-b382-4315-8d19-ba48a64b2ab3
+    type: APIReference
+  - url: openapi/elead-crm-openapi.yml
+    type: OpenAPI
+  description: >-
+    Helper API that provides reference/lookup data used by the other Vehicle
+    Sales APIs - opportunity sources and sub-sources by company and up type,
+    opportunity statuses, sales steps, employee positions, employees by
+    position, sender ("from") email addresses, and a vehicle catalog of
+    classes, years, makes, models, and trims. Path prefix is
+    /sales/v1/elead/reference.
+common:
+- type: Website
+  url: https://www.eleadcrm.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/cdk-global
+- type: Documentation
+  url: https://apidocs.fortellis.io/
+- type: Plans
+  url: plans/elead-crm-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/elead-crm-rate-limits.yml
+- type: FinOps
+  url: finops/elead-crm-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

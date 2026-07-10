@@ -1,0 +1,69 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Elead
+providerId: elead-crm
+created: '2026-07-10'
+modified: '2026-07-10'
+reconciled: false
+tags:
+- CRM
+- Automotive
+- Fortellis
+- Rate Limiting
+- Quotas
+description: >-
+  The Elead Vehicle Sales APIs are throttled at the Fortellis gateway. CDK's
+  published connector metadata documents a throttling limit of 100 API calls
+  per connection per 60 seconds for each of the Elead Sales Opportunities, Sales
+  Customers, and Product Reference Data connectors. Additional per-solution or
+  per-dealer quotas may apply under the Fortellis partner agreement but are not
+  publicly documented. The opportunity delta search is bounded to a 7-day
+  lookback window, and search endpoints are paged (page / pageSize).
+notes: >-
+  The 100 calls / 60 seconds figure comes from CDK's Microsoft Power Platform
+  connector documentation, which mirrors the Fortellis-gated APIs. Confirm exact
+  production limits with CDK/Fortellis during reconciliation.
+sources:
+- https://learn.microsoft.com/en-us/connectors/cdkeleadsalescustomers/
+- https://learn.microsoft.com/en-us/connectors/cdkeleadsalesopportunities/
+- https://learn.microsoft.com/en-us/connectors/cdkeleadproductreferencedata/
+- https://apidocs.fortellis.io/
+responseCodes:
+  throttled: 429
+limits:
+- name: Sales Opportunities API Calls
+  scope: connection
+  metric: requests
+  limit: 100 per 60 seconds
+  notes: Per CDK connector metadata for the Elead Sales Opportunities connector.
+- name: Sales Customers API Calls
+  scope: connection
+  metric: requests
+  limit: 100 per 60 seconds
+  notes: Per CDK connector metadata for the Elead Sales Customers connector.
+- name: Product Reference Data API Calls
+  scope: connection
+  metric: requests
+  limit: 100 per 60 seconds
+  notes: Per CDK connector metadata for the Elead Product Reference Data connector.
+- name: Opportunity Delta Window
+  scope: request
+  metric: lookback
+  limit: 7 days
+  notes: searchDelta returns opportunities changed within the past 7 days only.
+- name: Sales Activities API Calls
+  scope: connection
+  metric: requests
+  limit: not published
+  notes: No public rate limit located for the Sales Activities API; assume gateway throttling similar to the other connectors.
+policies:
+- name: Gateway Throttling
+  description: Requests are throttled at the CDK Fortellis gateway per connection; excess requests receive HTTP 429.
+- name: Pagination
+  description: Search endpoints (customers, opportunities) page results via page and pageSize query parameters.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
