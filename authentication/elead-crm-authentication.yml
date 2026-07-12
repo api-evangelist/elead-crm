@@ -1,0 +1,30 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/elead-crm-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: fortellisClientId
+  type: apiKey
+  in: header
+  parameter: client_id
+  description: Fortellis-issued client id for the solution.
+  sources:
+  - openapi/elead-crm-openapi.yml
+- name: fortellisClientSecret
+  type: apiKey
+  in: header
+  parameter: client_secret
+  description: Fortellis-issued client secret for the solution.
+  sources:
+  - openapi/elead-crm-openapi.yml
+- name: subscriptionId
+  type: apiKey
+  in: header
+  parameter: Subscription-Id
+  description: Per-dealer subscription identifier provided when the dealer activates the app.
+  sources:
+  - openapi/elead-crm-openapi.yml

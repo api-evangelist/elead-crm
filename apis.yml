@@ -120,6 +120,10 @@ apis:
     classes, years, makes, models, and trims. Path prefix is
     /sales/v1/elead/reference.
 common:
+- type: DomainSecurity
+  url: security/elead-crm-domain-security.yml
+- type: Authentication
+  url: authentication/elead-crm-authentication.yml
 - type: Website
   url: https://www.eleadcrm.com
 - type: LinkedIn
