@@ -120,6 +120,8 @@ apis:
     classes, years, makes, models, and trims. Path prefix is
     /sales/v1/elead/reference.
 common:
+- type: AgenticAccess
+  url: agentic-access/elead-crm-agentic-access.yml
 - type: DomainSecurity
   url: security/elead-crm-domain-security.yml
 - type: Authentication
