@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Elead Vehicle Sales APIs Activities API
+  version: 1.2.0
+  description: 'Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data.
+
+
+    Access model: not open self-service. A developer must be a Fortellis user, create a Fortellis solution to obtain client_id/client_secret, and have the dealer activate the subscription (Subscription-Id). Every request also carries a Request-Id correlation header.
+
+
+    Source note: the Sales Opportunities, Sales Customers, and Product Reference Data operations are transcribed from CDK Global''s Fortellis connector reference (mirrored on Microsoft Learn) and the Fortellis API directory. The Sales Activities operations are marked x-endpoints-modeled - they are inferred from CDK/Elead product descriptions, not a confirmed public reference. Verify exact paths and payloads in the Fortellis directory before implementation.'
+  contact:
+    name: CDK Global / Elead (via Fortellis)
+    url: https://apidocs.fortellis.io/
+    email: mbd_support@cdk.com
+servers:
+- url: https://api.fortellis.io/sales/v1/elead
+  description: CDK Fortellis gateway - Elead Vehicle Sales APIs
+security:
+- fortellisClientId: []
+  fortellisClientSecret: []
+  subscriptionId: []
+tags:
+- name: Activities
+  description: Sales activities, appointments, and activity history. Endpoints modeled.
+paths:
+  /activities:
+    post:
+      tags:
+      - Activities
+      operationId: Activities_CreateActivity
+      summary: Create a scheduled or completed activity (MODELED)
+      description: Endpoint modeled from CDK/Elead product descriptions - not confirmed against a public reference. Verify in the Fortellis directory.
+      x-endpoints-modeled: true
+      parameters:
+      - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                opportunityId:
+                  type: string
+                  format: uuid
+                type:
+                  type: string
+                scheduledDate:
+                  type: string
+                  format: date-time
+                isCompleted:
+                  type: boolean
+                comments:
+                  type: string
+      responses:
+        '201':
+          description: Activity created (modeled)
+  /activities/history:
+    get:
+      tags:
+      - Activities
+      operationId: Activities_GetHistory
+      summary: Query sales activity history with comments (MODELED)
+      description: Endpoint modeled from CDK/Elead product descriptions - not confirmed against a public reference. Verify in the Fortellis directory.
+      x-endpoints-modeled: true
+      parameters:
+      - name: opportunityId
+        in: query
+        schema:
+          type: string
+          format: uuid
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Activity history (modeled)
+components:
+  parameters:
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      description: GUID correlation id echoed back on the response.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    fortellisClientId:
+      type: apiKey
+      in: header
+      name: client_id
+      description: Fortellis-issued client id for the solution.
+    fortellisClientSecret:
+      type: apiKey
+      in: header
+      name: client_secret
+      description: Fortellis-issued client secret for the solution.
+    subscriptionId:
+      type: apiKey
+      in: header
+      name: Subscription-Id
+      description: Per-dealer subscription identifier provided when the dealer activates the app.

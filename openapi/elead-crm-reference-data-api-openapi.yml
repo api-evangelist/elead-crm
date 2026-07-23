@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Elead Vehicle Sales APIs Activities Reference Data API
+  version: 1.2.0
+  description: 'Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data.
+
+
+    Access model: not open self-service. A developer must be a Fortellis user, create a Fortellis solution to obtain client_id/client_secret, and have the dealer activate the subscription (Subscription-Id). Every request also carries a Request-Id correlation header.
+
+
+    Source note: the Sales Opportunities, Sales Customers, and Product Reference Data operations are transcribed from CDK Global''s Fortellis connector reference (mirrored on Microsoft Learn) and the Fortellis API directory. The Sales Activities operations are marked x-endpoints-modeled - they are inferred from CDK/Elead product descriptions, not a confirmed public reference. Verify exact paths and payloads in the Fortellis directory before implementation.'
+  contact:
+    name: CDK Global / Elead (via Fortellis)
+    url: https://apidocs.fortellis.io/
+    email: mbd_support@cdk.com
+servers:
+- url: https://api.fortellis.io/sales/v1/elead
+  description: CDK Fortellis gateway - Elead Vehicle Sales APIs
+security:
+- fortellisClientId: []
+  fortellisClientSecret: []
+  subscriptionId: []
+tags:
+- name: Reference Data
+  description: Lookup data supporting the other Vehicle Sales APIs.
+paths:
+  /reference/opportunitySources:
+    get:
+      tags:
+      - Reference Data
+      operationId: GetCompanyOpportunitySources
+      summary: Get opportunity sources for the company and up types
+      parameters:
+      - name: upType
+        in: query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Opportunity sources
+  /reference/vehicles/makes:
+    get:
+      tags:
+      - Reference Data
+      operationId: GetVehicleMakes
+      summary: Get available vehicle makes by year and class
+      parameters:
+      - name: year
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: class
+        in: query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Vehicle makes
+components:
+  parameters:
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      description: GUID correlation id echoed back on the response.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    fortellisClientId:
+      type: apiKey
+      in: header
+      name: client_id
+      description: Fortellis-issued client id for the solution.
+    fortellisClientSecret:
+      type: apiKey
+      in: header
+      name: client_secret
+      description: Fortellis-issued client secret for the solution.
+    subscriptionId:
+      type: apiKey
+      in: header
+      name: Subscription-Id
+      description: Per-dealer subscription identifier provided when the dealer activates the app.
