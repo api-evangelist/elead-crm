@@ -1,0 +1,20 @@
+{
+  "provider": "elead-crm",
+  "sources": [
+    "elead-crm-activities-api-openapi.yml",
+    "elead-crm-customers-api-openapi.yml",
+    "elead-crm-opportunities-api-openapi.yml",
+    "elead-crm-reference-data-api-openapi.yml"
+  ],
+  "outputs": [
+    "elead-crm-activities-api-openapi.yml",
+    "elead-crm-customers-api-openapi.yml",
+    "elead-crm-opportunities-api-openapi.yml",
+    "elead-crm-reference-data-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

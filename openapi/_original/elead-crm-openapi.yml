@@ -1,0 +1,513 @@
+openapi: 3.0.3
+info:
+  title: Elead Vehicle Sales APIs
+  version: '1.2.0'
+  description: >-
+    Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of
+    CDK Global), published through the CDK Fortellis Automotive Commerce
+    Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and
+    Product Reference Data.
+
+
+    Access model: not open self-service. A developer must be a Fortellis user,
+    create a Fortellis solution to obtain client_id/client_secret, and have the
+    dealer activate the subscription (Subscription-Id). Every request also
+    carries a Request-Id correlation header.
+
+
+    Source note: the Sales Opportunities, Sales Customers, and Product Reference
+    Data operations are transcribed from CDK Global's Fortellis connector
+    reference (mirrored on Microsoft Learn) and the Fortellis API directory. The
+    Sales Activities operations are marked x-endpoints-modeled - they are
+    inferred from CDK/Elead product descriptions, not a confirmed public
+    reference. Verify exact paths and payloads in the Fortellis directory before
+    implementation.
+  contact:
+    name: CDK Global / Elead (via Fortellis)
+    url: https://apidocs.fortellis.io/
+    email: mbd_support@cdk.com
+servers:
+- url: https://api.fortellis.io/sales/v1/elead
+  description: CDK Fortellis gateway - Elead Vehicle Sales APIs
+tags:
+- name: Opportunities
+  description: Sales opportunities (leads), vehicles of interest, trade-ins, sales team, emails.
+- name: Customers
+  description: Prospect and customer records and their owned vehicles.
+- name: Activities
+  description: Sales activities, appointments, and activity history. Endpoints modeled.
+- name: Reference Data
+  description: Lookup data supporting the other Vehicle Sales APIs.
+paths:
+  /customers:
+    post:
+      tags: [Customers]
+      operationId: Customers_CreateCustomer
+      summary: Create a prospect/customer
+      description: Creates a prospect/customer and returns the uniquely assigned Elead customer Id.
+      parameters:
+      - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/search:
+    get:
+      tags: [Customers]
+      operationId: Customers_SearchCustomers
+      summary: Search customers
+      description: Search prospects/customers by first name, last name, phone number, or email address.
+      parameters:
+      - name: firstName
+        in: query
+        schema: { type: string }
+      - name: lastName
+        in: query
+        schema: { type: string }
+      - name: phoneNumber
+        in: query
+        schema: { type: string }
+      - name: emailAddress
+        in: query
+        schema: { type: string }
+      - name: page
+        in: query
+        schema: { type: integer, format: int32 }
+      - name: pageSize
+        in: query
+        schema: { type: integer, format: int32 }
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Paged customer search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchCustomersResponse'
+  /customers/{customerId}:
+    get:
+      tags: [Customers]
+      operationId: Customers_GetCustomer
+      summary: Get customer by Id
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Customer record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    put:
+      tags: [Customers]
+      operationId: Customers_UpdateCustomer
+      summary: Update a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Updated customer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{customerId}/vehicles:
+    get:
+      tags: [Customers]
+      operationId: Customers_GetCustomerOwnedVehicles
+      summary: Get customer owned vehicles
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Customer owned vehicle records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerVehicle'
+  /opportunities:
+    post:
+      tags: [Opportunities]
+      operationId: Opportunities_CreateOpportunity
+      summary: Create a new opportunity
+      description: Creates a new opportunity for an existing customer record.
+      parameters:
+      - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Opportunity'
+      responses:
+        '201':
+          description: Opportunity created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Opportunity'
+  /opportunities/search:
+    get:
+      tags: [Opportunities]
+      operationId: Opportunities_Search
+      summary: Query opportunities by date range
+      parameters:
+      - name: dateFrom
+        in: query
+        schema: { type: string, format: date-time }
+      - name: dateTo
+        in: query
+        schema: { type: string, format: date-time }
+      - name: page
+        in: query
+        schema: { type: integer, format: int32 }
+      - name: pageSize
+        in: query
+        schema: { type: integer, format: int32 }
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Paged opportunities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchOpportunitiesResponse'
+  /opportunities/searchDelta:
+    get:
+      tags: [Opportunities]
+      operationId: Opportunities_SearchDelta
+      summary: Query opportunities changed since a date/time (within the past 7 days)
+      parameters:
+      - name: dateFrom
+        in: query
+        schema: { type: string, format: date-time }
+      - name: page
+        in: query
+        schema: { type: integer, format: int32 }
+      - name: pageSize
+        in: query
+        schema: { type: integer, format: int32 }
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Paged delta opportunities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchOpportunitiesResponse'
+  /opportunities/{opportunityId}/comments:
+    post:
+      tags: [Opportunities]
+      operationId: Opportunities_AddComment
+      summary: Add a comment to an opportunity
+      parameters:
+      - $ref: '#/components/parameters/OpportunityId'
+      - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment: { type: string }
+      responses:
+        '200':
+          description: Comment added
+  /opportunities/{opportunityId}/email:
+    post:
+      tags: [Opportunities]
+      operationId: Opportunities_SendEmail
+      summary: Send an email and create the corresponding activity
+      parameters:
+      - $ref: '#/components/parameters/OpportunityId'
+      - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [from, recipients, subject, body, isHtml]
+              properties:
+                from: { type: string }
+                recipients:
+                  type: array
+                  items: { type: string }
+                carbonCopies:
+                  type: array
+                  items: { type: string }
+                subject: { type: string }
+                body: { type: string }
+                isHtml: { type: boolean }
+      responses:
+        '200':
+          description: Email sent and activity created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  activityId: { type: string, format: uuid }
+  /reference/opportunitySources:
+    get:
+      tags: [Reference Data]
+      operationId: GetCompanyOpportunitySources
+      summary: Get opportunity sources for the company and up types
+      parameters:
+      - name: upType
+        in: query
+        schema: { type: string }
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200': { description: Opportunity sources }
+  /reference/vehicles/makes:
+    get:
+      tags: [Reference Data]
+      operationId: GetVehicleMakes
+      summary: Get available vehicle makes by year and class
+      parameters:
+      - name: year
+        in: query
+        required: true
+        schema: { type: integer }
+      - name: class
+        in: query
+        schema: { type: string }
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200': { description: Vehicle makes }
+  /activities:
+    post:
+      tags: [Activities]
+      operationId: Activities_CreateActivity
+      summary: Create a scheduled or completed activity (MODELED)
+      description: >-
+        Endpoint modeled from CDK/Elead product descriptions - not confirmed
+        against a public reference. Verify in the Fortellis directory.
+      x-endpoints-modeled: true
+      parameters:
+      - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                opportunityId: { type: string, format: uuid }
+                type: { type: string }
+                scheduledDate: { type: string, format: date-time }
+                isCompleted: { type: boolean }
+                comments: { type: string }
+      responses:
+        '201':
+          description: Activity created (modeled)
+  /activities/history:
+    get:
+      tags: [Activities]
+      operationId: Activities_GetHistory
+      summary: Query sales activity history with comments (MODELED)
+      description: >-
+        Endpoint modeled from CDK/Elead product descriptions - not confirmed
+        against a public reference. Verify in the Fortellis directory.
+      x-endpoints-modeled: true
+      parameters:
+      - name: opportunityId
+        in: query
+        schema: { type: string, format: uuid }
+      - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Activity history (modeled)
+components:
+  securitySchemes:
+    fortellisClientId:
+      type: apiKey
+      in: header
+      name: client_id
+      description: Fortellis-issued client id for the solution.
+    fortellisClientSecret:
+      type: apiKey
+      in: header
+      name: client_secret
+      description: Fortellis-issued client secret for the solution.
+    subscriptionId:
+      type: apiKey
+      in: header
+      name: Subscription-Id
+      description: Per-dealer subscription identifier provided when the dealer activates the app.
+  parameters:
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      description: GUID correlation id echoed back on the response.
+      schema:
+        type: string
+        format: uuid
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    OpportunityId:
+      name: opportunityId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        isBusiness: { type: boolean }
+        businessName: { type: string }
+        businessContact: { type: string }
+        title: { type: string }
+        firstName: { type: string }
+        middleName: { type: string }
+        lastName: { type: string }
+        nickname: { type: string }
+        birthday: { type: string, format: date-time }
+        emails:
+          type: array
+          items: { $ref: '#/components/schemas/CustomerEmail' }
+        phones:
+          type: array
+          items: { $ref: '#/components/schemas/CustomerPhone' }
+        address: { $ref: '#/components/schemas/CustomerAddress' }
+    CustomerEmail:
+      type: object
+      properties:
+        address: { type: string }
+        emailType: { type: string }
+        doNotEmail: { type: boolean }
+        isPreferred: { type: boolean }
+    CustomerPhone:
+      type: object
+      properties:
+        number: { type: string }
+        phoneType: { type: string }
+        preferredTimeToContact: { type: string }
+        doNotCall: { type: boolean }
+        doNotText: { type: boolean }
+        preferCall: { type: boolean }
+        preferText: { type: boolean }
+    CustomerAddress:
+      type: object
+      properties:
+        addressLine1: { type: string }
+        addressLine2: { type: string }
+        city: { type: string }
+        state: { type: string }
+        zip: { type: string }
+        country: { type: string }
+        county: { type: string }
+        doNotMail: { type: boolean }
+        isPreferred: { type: boolean }
+    CustomerVehicle:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        year: { type: integer }
+        make: { type: string }
+        model: { type: string }
+        trim: { type: string }
+        vin: { type: string }
+        mileage: { type: integer }
+        exteriorColor: { type: string }
+        interiorColor: { type: string }
+    SearchCustomersResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/Customer' }
+        totalItems: { type: integer }
+        totalPages: { type: integer }
+        pageNumber: { type: integer }
+        pageSize: { type: integer }
+    Opportunity:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        customerId: { type: string, format: uuid }
+        dateIn: { type: string, format: date-time }
+        source: { type: string }
+        subSource: { type: string }
+        status: { type: string }
+        subStatus: { type: string }
+        upType: { type: string }
+        soughtVehicles:
+          type: array
+          items: { $ref: '#/components/schemas/VehicleSought' }
+        tradeIns:
+          type: array
+          items: { $ref: '#/components/schemas/VehicleTradeIn' }
+    VehicleSought:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        isNew: { type: boolean }
+        yearFrom: { type: integer }
+        yearTo: { type: integer }
+        make: { type: string }
+        model: { type: string }
+        trim: { type: string }
+        vin: { type: string }
+        priceFrom: { type: number }
+        priceTo: { type: number }
+        maxMileage: { type: integer }
+        stockNumber: { type: string }
+        isPrimary: { type: boolean }
+    VehicleTradeIn:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        year: { type: integer }
+        make: { type: string }
+        model: { type: string }
+        trim: { type: string }
+        vin: { type: string }
+        estimatedMileage: { type: integer }
+        interiorColor: { type: string }
+        exteriorColor: { type: string }
+    SearchOpportunitiesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/Opportunity' }
+        totalItems: { type: integer }
+        totalPages: { type: integer }
+        pageNumber: { type: integer }
+        pageSize: { type: integer }
+security:
+- fortellisClientId: []
+  fortellisClientSecret: []
+  subscriptionId: []
