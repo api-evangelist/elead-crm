@@ -37,7 +37,7 @@ tags:
 - CDK Global
 created: '2026-07-10'
 modified: '2026-07-10'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: elead-crm:elead-crm-activities-api
   name: Elead Activities API
