@@ -1,0 +1,653 @@
+{
+  "item": [
+    {
+      "id": "1c9e155b-2c85-4e2a-9451-8aaef8395b0c",
+      "name": "Opportunities",
+      "description": {
+        "content": "Sales opportunities (leads), vehicles of interest, trade-ins, sales team, emails.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5c14ed3-3121-4fa7-9139-3eda7d85dca0",
+          "name": "Create a new opportunity",
+          "request": {
+            "name": "Create a new opportunity",
+            "description": {
+              "content": "Creates a new opportunity for an existing customer record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "opportunities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"customerId\": \"<uuid>\",\n  \"dateIn\": \"<dateTime>\",\n  \"source\": \"<string>\",\n  \"subSource\": \"<string>\",\n  \"status\": \"<string>\",\n  \"subStatus\": \"<string>\",\n  \"upType\": \"<string>\",\n  \"soughtVehicles\": [\n    {\n      \"id\": \"<uuid>\",\n      \"isNew\": \"<boolean>\",\n      \"yearFrom\": \"<integer>\",\n      \"yearTo\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"priceFrom\": \"<number>\",\n      \"priceTo\": \"<number>\",\n      \"maxMileage\": \"<integer>\",\n      \"stockNumber\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"isNew\": \"<boolean>\",\n      \"yearFrom\": \"<integer>\",\n      \"yearTo\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"priceFrom\": \"<number>\",\n      \"priceTo\": \"<number>\",\n      \"maxMileage\": \"<integer>\",\n      \"stockNumber\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    }\n  ],\n  \"tradeIns\": [\n    {\n      \"id\": \"<uuid>\",\n      \"year\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"estimatedMileage\": \"<integer>\",\n      \"interiorColor\": \"<string>\",\n      \"exteriorColor\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"year\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"estimatedMileage\": \"<integer>\",\n      \"interiorColor\": \"<string>\",\n      \"exteriorColor\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af8b63ce-1180-482e-b5f5-e124cd79627b",
+              "name": "Opportunity created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"customerId\": \"<uuid>\",\n  \"dateIn\": \"<dateTime>\",\n  \"source\": \"<string>\",\n  \"subSource\": \"<string>\",\n  \"status\": \"<string>\",\n  \"subStatus\": \"<string>\",\n  \"upType\": \"<string>\",\n  \"soughtVehicles\": [\n    {\n      \"id\": \"<uuid>\",\n      \"isNew\": \"<boolean>\",\n      \"yearFrom\": \"<integer>\",\n      \"yearTo\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"priceFrom\": \"<number>\",\n      \"priceTo\": \"<number>\",\n      \"maxMileage\": \"<integer>\",\n      \"stockNumber\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"isNew\": \"<boolean>\",\n      \"yearFrom\": \"<integer>\",\n      \"yearTo\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"priceFrom\": \"<number>\",\n      \"priceTo\": \"<number>\",\n      \"maxMileage\": \"<integer>\",\n      \"stockNumber\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    }\n  ],\n  \"tradeIns\": [\n    {\n      \"id\": \"<uuid>\",\n      \"year\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"estimatedMileage\": \"<integer>\",\n      \"interiorColor\": \"<string>\",\n      \"exteriorColor\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"year\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"estimatedMileage\": \"<integer>\",\n      \"interiorColor\": \"<string>\",\n      \"exteriorColor\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"customerId\": \"<uuid>\",\n  \"dateIn\": \"<dateTime>\",\n  \"source\": \"<string>\",\n  \"subSource\": \"<string>\",\n  \"status\": \"<string>\",\n  \"subStatus\": \"<string>\",\n  \"upType\": \"<string>\",\n  \"soughtVehicles\": [\n    {\n      \"id\": \"<uuid>\",\n      \"isNew\": \"<boolean>\",\n      \"yearFrom\": \"<integer>\",\n      \"yearTo\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"priceFrom\": \"<number>\",\n      \"priceTo\": \"<number>\",\n      \"maxMileage\": \"<integer>\",\n      \"stockNumber\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"isNew\": \"<boolean>\",\n      \"yearFrom\": \"<integer>\",\n      \"yearTo\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"priceFrom\": \"<number>\",\n      \"priceTo\": \"<number>\",\n      \"maxMileage\": \"<integer>\",\n      \"stockNumber\": \"<string>\",\n      \"isPrimary\": \"<boolean>\"\n    }\n  ],\n  \"tradeIns\": [\n    {\n      \"id\": \"<uuid>\",\n      \"year\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"estimatedMileage\": \"<integer>\",\n      \"interiorColor\": \"<string>\",\n      \"exteriorColor\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"year\": \"<integer>\",\n      \"make\": \"<string>\",\n      \"model\": \"<string>\",\n      \"trim\": \"<string>\",\n      \"vin\": \"<string>\",\n      \"estimatedMileage\": \"<integer>\",\n      \"interiorColor\": \"<string>\",\n      \"exteriorColor\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56e69e25-25b3-4278-8589-480ea0656155",
+          "name": "Query opportunities by date range",
+          "request": {
+            "name": "Query opportunities by date range",
+            "description": {},
+            "url": {
+              "path": [
+                "opportunities",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dcd1ed92-515f-4323-8434-ec62fa88d5a8",
+              "name": "Paged opportunities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"customerId\": \"<uuid>\",\n      \"dateIn\": \"<dateTime>\",\n      \"source\": \"<string>\",\n      \"subSource\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subStatus\": \"<string>\",\n      \"upType\": \"<string>\",\n      \"soughtVehicles\": [\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        }\n      ],\n      \"tradeIns\": [\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"customerId\": \"<uuid>\",\n      \"dateIn\": \"<dateTime>\",\n      \"source\": \"<string>\",\n      \"subSource\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subStatus\": \"<string>\",\n      \"upType\": \"<string>\",\n      \"soughtVehicles\": [\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        }\n      ],\n      \"tradeIns\": [\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"totalItems\": 2184,\n  \"totalPages\": 2187,\n  \"pageNumber\": 4155,\n  \"pageSize\": 3714\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a8e6924-852b-4392-b72f-294bd71d891a",
+          "name": "Query opportunities changed since a date/time (within the past 7 days)",
+          "request": {
+            "name": "Query opportunities changed since a date/time (within the past 7 days)",
+            "description": {},
+            "url": {
+              "path": [
+                "opportunities",
+                "searchDelta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14ef5d38-a79a-4a3e-8f37-911dc9e3253a",
+              "name": "Paged delta opportunities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunities",
+                    "searchDelta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"customerId\": \"<uuid>\",\n      \"dateIn\": \"<dateTime>\",\n      \"source\": \"<string>\",\n      \"subSource\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subStatus\": \"<string>\",\n      \"upType\": \"<string>\",\n      \"soughtVehicles\": [\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        }\n      ],\n      \"tradeIns\": [\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"customerId\": \"<uuid>\",\n      \"dateIn\": \"<dateTime>\",\n      \"source\": \"<string>\",\n      \"subSource\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subStatus\": \"<string>\",\n      \"upType\": \"<string>\",\n      \"soughtVehicles\": [\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"isNew\": \"<boolean>\",\n          \"yearFrom\": \"<integer>\",\n          \"yearTo\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"priceFrom\": \"<number>\",\n          \"priceTo\": \"<number>\",\n          \"maxMileage\": \"<integer>\",\n          \"stockNumber\": \"<string>\",\n          \"isPrimary\": \"<boolean>\"\n        }\n      ],\n      \"tradeIns\": [\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"year\": \"<integer>\",\n          \"make\": \"<string>\",\n          \"model\": \"<string>\",\n          \"trim\": \"<string>\",\n          \"vin\": \"<string>\",\n          \"estimatedMileage\": \"<integer>\",\n          \"interiorColor\": \"<string>\",\n          \"exteriorColor\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"totalItems\": 8121,\n  \"totalPages\": 8224,\n  \"pageNumber\": 1346,\n  \"pageSize\": 9613\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f34461d-68dc-4ae6-83e0-74089a62d8ca",
+          "name": "Add a comment to an opportunity",
+          "request": {
+            "name": "Add a comment to an opportunity",
+            "description": {},
+            "url": {
+              "path": [
+                "opportunities",
+                ":opportunityId",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "opportunityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9a987c4-d47b-4568-8b46-604ede799014",
+              "name": "Comment added",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunities",
+                    ":opportunityId",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "opportunityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e463ddf-d617-4ffc-8b7e-8569067e2d9b",
+          "name": "Send an email and create the corresponding activity",
+          "request": {
+            "name": "Send an email and create the corresponding activity",
+            "description": {},
+            "url": {
+              "path": [
+                "opportunities",
+                ":opportunityId",
+                "email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "opportunityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<string>\",\n  \"recipients\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"isHtml\": \"<boolean>\",\n  \"carbonCopies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7cb385f-3db6-450e-9599-07b07189d401",
+              "name": "Email sent and activity created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunities",
+                    ":opportunityId",
+                    "email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "opportunityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<string>\",\n  \"recipients\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"subject\": \"<string>\",\n  \"body\": \"<string>\",\n  \"isHtml\": \"<boolean>\",\n  \"carbonCopies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activityId\": \"0cbdd165-0268-4588-3101-ef21eeb7e060\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fortellis.io/sales/v1/elead",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6cbd7819-f649-4786-a02b-d3aaee00739f",
+    "name": "Elead Vehicle Sales APIs Activities Opportunities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data.\n\nAccess model: not open self-service. A developer must be a Fortellis user, create a Fortellis solution to obtain client_id/client_secret, and have the dealer activate the subscription (Subscription-Id). Every request also carries a Request-Id correlation header.\n\nSource note: the Sales Opportunities, Sales Customers, and Product Reference Data operations are transcribed from CDK Global's Fortellis connector reference (mirrored on Microsoft Learn) and the Fortellis API directory. The Sales Activities operations are marked x-endpoints-modeled - they are inferred from CDK/Elead product descriptions, not a confirmed public reference. Verify exact paths and payloads in the Fortellis directory before implementation.\n\nContact Support:\n Name: CDK Global / Elead (via Fortellis)\n Email: mbd_support@cdk.com",
+      "type": "text/plain"
+    }
+  }
+}

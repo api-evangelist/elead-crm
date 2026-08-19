@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Elead Vehicle Sales APIs Activities Reference Data API",
+    "version": "1.2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "client_id",
+      "value": "{{client_id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get opportunity sources for the company and up types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fortellis.io/sales/v1/elead/reference/opportunitySources",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "upType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get opportunity sources for the company and up types"
+        },
+        {
+          "info": {
+            "name": "Get available vehicle makes by year and class",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fortellis.io/sales/v1/elead/reference/vehicles/makes",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "class",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get available vehicle makes by year and class"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

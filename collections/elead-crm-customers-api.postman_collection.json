@@ -1,0 +1,646 @@
+{
+  "item": [
+    {
+      "id": "94d84deb-b5f6-4f71-8c07-d7e85e589cfb",
+      "name": "Customers",
+      "description": {
+        "content": "Prospect and customer records and their owned vehicles.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "23a5a649-0ad3-4057-96dd-5f1e09ba51af",
+          "name": "Create a prospect/customer",
+          "request": {
+            "name": "Create a prospect/customer",
+            "description": {
+              "content": "Creates a prospect/customer and returns the uniquely assigned Elead customer Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"isBusiness\": \"<boolean>\",\n  \"businessName\": \"<string>\",\n  \"businessContact\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"emails\": [\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    }\n  ],\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"county\": \"<string>\",\n    \"doNotMail\": \"<boolean>\",\n    \"isPreferred\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88f674bd-7c3a-4373-9897-e54f239cee42",
+              "name": "Customer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"isBusiness\": \"<boolean>\",\n  \"businessName\": \"<string>\",\n  \"businessContact\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"emails\": [\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    }\n  ],\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"county\": \"<string>\",\n    \"doNotMail\": \"<boolean>\",\n    \"isPreferred\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"isBusiness\": \"<boolean>\",\n  \"businessName\": \"<string>\",\n  \"businessContact\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"emails\": [\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    }\n  ],\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"county\": \"<string>\",\n    \"doNotMail\": \"<boolean>\",\n    \"isPreferred\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0fc9cec-b709-4863-8e75-9fb12d5ad8db",
+          "name": "Search customers",
+          "request": {
+            "name": "Search customers",
+            "description": {
+              "content": "Search prospects/customers by first name, last name, phone number, or email address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "firstName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "phoneNumber",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "emailAddress",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0a3e11f-11bb-4988-981b-346953971bf7",
+              "name": "Paged customer search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "phoneNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "emailAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"isBusiness\": \"<boolean>\",\n      \"businessName\": \"<string>\",\n      \"businessContact\": \"<string>\",\n      \"title\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nickname\": \"<string>\",\n      \"birthday\": \"<dateTime>\",\n      \"emails\": [\n        {\n          \"address\": \"<string>\",\n          \"emailType\": \"<string>\",\n          \"doNotEmail\": \"<boolean>\",\n          \"isPreferred\": \"<boolean>\"\n        },\n        {\n          \"address\": \"<string>\",\n          \"emailType\": \"<string>\",\n          \"doNotEmail\": \"<boolean>\",\n          \"isPreferred\": \"<boolean>\"\n        }\n      ],\n      \"phones\": [\n        {\n          \"number\": \"<string>\",\n          \"phoneType\": \"<string>\",\n          \"preferredTimeToContact\": \"<string>\",\n          \"doNotCall\": \"<boolean>\",\n          \"doNotText\": \"<boolean>\",\n          \"preferCall\": \"<boolean>\",\n          \"preferText\": \"<boolean>\"\n        },\n        {\n          \"number\": \"<string>\",\n          \"phoneType\": \"<string>\",\n          \"preferredTimeToContact\": \"<string>\",\n          \"doNotCall\": \"<boolean>\",\n          \"doNotText\": \"<boolean>\",\n          \"preferCall\": \"<boolean>\",\n          \"preferText\": \"<boolean>\"\n        }\n      ],\n      \"address\": {\n        \"addressLine1\": \"<string>\",\n        \"addressLine2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"country\": \"<string>\",\n        \"county\": \"<string>\",\n        \"doNotMail\": \"<boolean>\",\n        \"isPreferred\": \"<boolean>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"isBusiness\": \"<boolean>\",\n      \"businessName\": \"<string>\",\n      \"businessContact\": \"<string>\",\n      \"title\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"nickname\": \"<string>\",\n      \"birthday\": \"<dateTime>\",\n      \"emails\": [\n        {\n          \"address\": \"<string>\",\n          \"emailType\": \"<string>\",\n          \"doNotEmail\": \"<boolean>\",\n          \"isPreferred\": \"<boolean>\"\n        },\n        {\n          \"address\": \"<string>\",\n          \"emailType\": \"<string>\",\n          \"doNotEmail\": \"<boolean>\",\n          \"isPreferred\": \"<boolean>\"\n        }\n      ],\n      \"phones\": [\n        {\n          \"number\": \"<string>\",\n          \"phoneType\": \"<string>\",\n          \"preferredTimeToContact\": \"<string>\",\n          \"doNotCall\": \"<boolean>\",\n          \"doNotText\": \"<boolean>\",\n          \"preferCall\": \"<boolean>\",\n          \"preferText\": \"<boolean>\"\n        },\n        {\n          \"number\": \"<string>\",\n          \"phoneType\": \"<string>\",\n          \"preferredTimeToContact\": \"<string>\",\n          \"doNotCall\": \"<boolean>\",\n          \"doNotText\": \"<boolean>\",\n          \"preferCall\": \"<boolean>\",\n          \"preferText\": \"<boolean>\"\n        }\n      ],\n      \"address\": {\n        \"addressLine1\": \"<string>\",\n        \"addressLine2\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"country\": \"<string>\",\n        \"county\": \"<string>\",\n        \"doNotMail\": \"<boolean>\",\n        \"isPreferred\": \"<boolean>\"\n      }\n    }\n  ],\n  \"totalItems\": 7030,\n  \"totalPages\": 4666,\n  \"pageNumber\": 683,\n  \"pageSize\": 4019\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0bff4e2-9d1f-441e-ab52-481e532682d1",
+          "name": "Get customer by Id",
+          "request": {
+            "name": "Get customer by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f39f41f-8791-4b1e-8b8f-8932d1a7e740",
+              "name": "Customer record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"isBusiness\": \"<boolean>\",\n  \"businessName\": \"<string>\",\n  \"businessContact\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"emails\": [\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    }\n  ],\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"county\": \"<string>\",\n    \"doNotMail\": \"<boolean>\",\n    \"isPreferred\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d75088c2-e6ea-49fb-b940-38ed4c451f6a",
+          "name": "Update a customer",
+          "request": {
+            "name": "Update a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"isBusiness\": \"<boolean>\",\n  \"businessName\": \"<string>\",\n  \"businessContact\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"emails\": [\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    }\n  ],\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"county\": \"<string>\",\n    \"doNotMail\": \"<boolean>\",\n    \"isPreferred\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62bc27eb-3b6a-4fb1-8910-e70105b31f44",
+              "name": "Updated customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"isBusiness\": \"<boolean>\",\n  \"businessName\": \"<string>\",\n  \"businessContact\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"emails\": [\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    }\n  ],\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"county\": \"<string>\",\n    \"doNotMail\": \"<boolean>\",\n    \"isPreferred\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"isBusiness\": \"<boolean>\",\n  \"businessName\": \"<string>\",\n  \"businessContact\": \"<string>\",\n  \"title\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"nickname\": \"<string>\",\n  \"birthday\": \"<dateTime>\",\n  \"emails\": [\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"emailType\": \"<string>\",\n      \"doNotEmail\": \"<boolean>\",\n      \"isPreferred\": \"<boolean>\"\n    }\n  ],\n  \"phones\": [\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    },\n    {\n      \"number\": \"<string>\",\n      \"phoneType\": \"<string>\",\n      \"preferredTimeToContact\": \"<string>\",\n      \"doNotCall\": \"<boolean>\",\n      \"doNotText\": \"<boolean>\",\n      \"preferCall\": \"<boolean>\",\n      \"preferText\": \"<boolean>\"\n    }\n  ],\n  \"address\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"country\": \"<string>\",\n    \"county\": \"<string>\",\n    \"doNotMail\": \"<boolean>\",\n    \"isPreferred\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cb5c157-99d6-403b-9576-f0ce51dce59c",
+          "name": "Get customer owned vehicles",
+          "request": {
+            "name": "Get customer owned vehicles",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "vehicles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e5e9f13-fe96-46d3-8142-61a586045f33",
+              "name": "Customer owned vehicle records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "vehicles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ce9c31b2-0b8f-59d5-3981-643a87a6c511\",\n    \"year\": 4887,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"vin\": \"string\",\n    \"mileage\": 2520,\n    \"exteriorColor\": \"string\",\n    \"interiorColor\": \"string\"\n  },\n  {\n    \"id\": \"abed72bc-104f-54e2-cc4e-11b5c1e86bff\",\n    \"year\": 8897,\n    \"make\": \"string\",\n    \"model\": \"string\",\n    \"trim\": \"string\",\n    \"vin\": \"string\",\n    \"mileage\": 5828,\n    \"exteriorColor\": \"string\",\n    \"interiorColor\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fortellis.io/sales/v1/elead",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5507384b-6411-458f-996e-fb69d63d9ab0",
+    "name": "Elead Vehicle Sales APIs Activities Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data.\n\nAccess model: not open self-service. A developer must be a Fortellis user, create a Fortellis solution to obtain client_id/client_secret, and have the dealer activate the subscription (Subscription-Id). Every request also carries a Request-Id correlation header.\n\nSource note: the Sales Opportunities, Sales Customers, and Product Reference Data operations are transcribed from CDK Global's Fortellis connector reference (mirrored on Microsoft Learn) and the Fortellis API directory. The Sales Activities operations are marked x-endpoints-modeled - they are inferred from CDK/Elead product descriptions, not a confirmed public reference. Verify exact paths and payloads in the Fortellis directory before implementation.\n\nContact Support:\n Name: CDK Global / Elead (via Fortellis)\n Email: mbd_support@cdk.com",
+      "type": "text/plain"
+    }
+  }
+}

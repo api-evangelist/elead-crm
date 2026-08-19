@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "a6281494-c656-4ac7-81cd-be74a5bbef58",
+      "name": "Reference Data",
+      "description": {
+        "content": "Lookup data supporting the other Vehicle Sales APIs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7af078d6-1239-4300-b396-a31d245c0e35",
+          "name": "Get opportunity sources for the company and up types",
+          "request": {
+            "name": "Get opportunity sources for the company and up types",
+            "description": {},
+            "url": {
+              "path": [
+                "reference",
+                "opportunitySources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "upType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c066d90-474c-459e-b36e-83d289a05ee7",
+              "name": "Opportunity sources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reference",
+                    "opportunitySources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "upType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18de24a0-8820-46c1-aa4b-658177bd7d5e",
+          "name": "Get available vehicle makes by year and class",
+          "request": {
+            "name": "Get available vehicle makes by year and class",
+            "description": {},
+            "url": {
+              "path": [
+                "reference",
+                "vehicles",
+                "makes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "class",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef708760-f033-42b2-b8a7-324639403b83",
+              "name": "Vehicle makes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reference",
+                    "vehicles",
+                    "makes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "class",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fortellis.io/sales/v1/elead",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "59aa29dc-e69a-4b0e-9ecb-58218694ca58",
+    "name": "Elead Vehicle Sales APIs Activities Reference Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data.\n\nAccess model: not open self-service. A developer must be a Fortellis user, create a Fortellis solution to obtain client_id/client_secret, and have the dealer activate the subscription (Subscription-Id). Every request also carries a Request-Id correlation header.\n\nSource note: the Sales Opportunities, Sales Customers, and Product Reference Data operations are transcribed from CDK Global's Fortellis connector reference (mirrored on Microsoft Learn) and the Fortellis API directory. The Sales Activities operations are marked x-endpoints-modeled - they are inferred from CDK/Elead product descriptions, not a confirmed public reference. Verify exact paths and payloads in the Fortellis directory before implementation.\n\nContact Support:\n Name: CDK Global / Elead (via Fortellis)\n Email: mbd_support@cdk.com",
+      "type": "text/plain"
+    }
+  }
+}

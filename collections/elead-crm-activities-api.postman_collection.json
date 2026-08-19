@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "64b27f98-82ae-46cc-abf5-d762401b28ae",
+      "name": "Activities",
+      "description": {
+        "content": "Sales activities, appointments, and activity history. Endpoints modeled.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b94e4168-8ff0-4cf3-a59c-2579b57a4472",
+          "name": "Create a scheduled or completed activity (MODELED)",
+          "request": {
+            "name": "Create a scheduled or completed activity (MODELED)",
+            "description": {
+              "content": "Endpoint modeled from CDK/Elead product descriptions - not confirmed against a public reference. Verify in the Fortellis directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"opportunityId\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"scheduledDate\": \"<dateTime>\",\n  \"isCompleted\": \"<boolean>\",\n  \"comments\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0317eda3-d071-4411-b776-36080532c4be",
+              "name": "Activity created (modeled)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"opportunityId\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"scheduledDate\": \"<dateTime>\",\n  \"isCompleted\": \"<boolean>\",\n  \"comments\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "962666b8-7951-43fb-a909-4dc2ac39980e",
+          "name": "Query sales activity history with comments (MODELED)",
+          "request": {
+            "name": "Query sales activity history with comments (MODELED)",
+            "description": {
+              "content": "Endpoint modeled from CDK/Elead product descriptions - not confirmed against a public reference. Verify in the Fortellis directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "opportunityId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) GUID correlation id echoed back on the response.",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3ff9c85-7ea9-4555-ae43-5fd82194d658",
+              "name": "Activity history (modeled)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "opportunityId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "client_id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) GUID correlation id echoed back on the response.",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fortellis.io/sales/v1/elead",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "client_id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2219a4a1-f78e-4880-b969-511d248b152f",
+    "name": "Elead Vehicle Sales APIs Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data.\n\nAccess model: not open self-service. A developer must be a Fortellis user, create a Fortellis solution to obtain client_id/client_secret, and have the dealer activate the subscription (Subscription-Id). Every request also carries a Request-Id correlation header.\n\nSource note: the Sales Opportunities, Sales Customers, and Product Reference Data operations are transcribed from CDK Global's Fortellis connector reference (mirrored on Microsoft Learn) and the Fortellis API directory. The Sales Activities operations are marked x-endpoints-modeled - they are inferred from CDK/Elead product descriptions, not a confirmed public reference. Verify exact paths and payloads in the Fortellis directory before implementation.\n\nContact Support:\n Name: CDK Global / Elead (via Fortellis)\n Email: mbd_support@cdk.com",
+      "type": "text/plain"
+    }
+  }
+}
