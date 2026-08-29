@@ -156,6 +156,9 @@ apis:
   - type: APIReference
     url: https://apidocs.fortellis.io/specs/8bbbe60f-b382-4315-8d19-ba48a64b2ab3
 common:
+- type: CapabilityMap
+  url: capabilities/elead-crm-capability-edges.yml
+  name: Elead Business Capability Map
 - type: AgenticAccess
   url: agentic-access/elead-crm-agentic-access.yml
 - type: DomainSecurity
