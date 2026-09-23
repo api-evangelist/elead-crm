@@ -1,14 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Elead Vehicle Sales APIs Activities Customers API
+  title: Elead Vehicle Sales Customers API
   version: 1.2.0
-  description: 'Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange. Covers Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data.
-
-
-    Access model: not open self-service. A developer must be a Fortellis user, create a Fortellis solution to obtain client_id/client_secret, and have the dealer activate the subscription (Subscription-Id). Every request also carries a Request-Id correlation header.
-
-
-    Source note: the Sales Opportunities, Sales Customers, and Product Reference Data operations are transcribed from CDK Global''s Fortellis connector reference (mirrored on Microsoft Learn) and the Fortellis API directory. The Sales Activities operations are marked x-endpoints-modeled - they are inferred from CDK/Elead product descriptions, not a confirmed public reference. Verify exact paths and payloads in the Fortellis directory before implementation.'
+  description: Partner-gated Vehicle Sales REST APIs for Elead (eLEAD / Elead CRM, part of CDK Global), published through the CDK Fortellis Automotive Commerce Exchange.
   contact:
     name: CDK Global / Elead (via Fortellis)
     url: https://apidocs.fortellis.io/
@@ -144,23 +138,24 @@ paths:
                 items:
                   $ref: '#/components/schemas/CustomerVehicle'
 components:
-  parameters:
-    RequestId:
-      name: Request-Id
-      in: header
-      required: true
-      description: GUID correlation id echoed back on the response.
-      schema:
-        type: string
-        format: uuid
-    CustomerId:
-      name: customerId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
+    CustomerPhone:
+      type: object
+      properties:
+        number:
+          type: string
+        phoneType:
+          type: string
+        preferredTimeToContact:
+          type: string
+        doNotCall:
+          type: boolean
+        doNotText:
+          type: boolean
+        preferCall:
+          type: boolean
+        preferText:
+          type: boolean
     CustomerEmail:
       type: object
       properties:
@@ -187,27 +182,6 @@ components:
           type: integer
         pageSize:
           type: integer
-    CustomerAddress:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        county:
-          type: string
-        doNotMail:
-          type: boolean
-        isPreferred:
-          type: boolean
     CustomerVehicle:
       type: object
       properties:
@@ -230,6 +204,27 @@ components:
           type: string
         interiorColor:
           type: string
+    CustomerAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        county:
+          type: string
+        doNotMail:
+          type: boolean
+        isPreferred:
+          type: boolean
     Customer:
       type: object
       properties:
@@ -265,23 +260,22 @@ components:
             $ref: '#/components/schemas/CustomerPhone'
         address:
           $ref: '#/components/schemas/CustomerAddress'
-    CustomerPhone:
-      type: object
-      properties:
-        number:
-          type: string
-        phoneType:
-          type: string
-        preferredTimeToContact:
-          type: string
-        doNotCall:
-          type: boolean
-        doNotText:
-          type: boolean
-        preferCall:
-          type: boolean
-        preferText:
-          type: boolean
+  parameters:
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      description: GUID correlation id echoed back on the response.
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     fortellisClientId:
       type: apiKey

@@ -1,10 +1,7 @@
 {
   "provider": "elead-crm",
   "sources": [
-    "elead-crm-activities-api-openapi.yml",
-    "elead-crm-customers-api-openapi.yml",
-    "elead-crm-opportunities-api-openapi.yml",
-    "elead-crm-reference-data-api-openapi.yml"
+    "_original/elead-crm-openapi.yml"
   ],
   "outputs": [
     "elead-crm-activities-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "elead-crm-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "elead-crm-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "elead-crm-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "elead-crm-opportunities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "elead-crm-reference-data-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
