@@ -138,50 +138,23 @@ paths:
                 items:
                   $ref: '#/components/schemas/CustomerVehicle'
 components:
+  parameters:
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      description: GUID correlation id echoed back on the response.
+      schema:
+        type: string
+        format: uuid
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
-    CustomerPhone:
-      type: object
-      properties:
-        number:
-          type: string
-        phoneType:
-          type: string
-        preferredTimeToContact:
-          type: string
-        doNotCall:
-          type: boolean
-        doNotText:
-          type: boolean
-        preferCall:
-          type: boolean
-        preferText:
-          type: boolean
-    CustomerEmail:
-      type: object
-      properties:
-        address:
-          type: string
-        emailType:
-          type: string
-        doNotEmail:
-          type: boolean
-        isPreferred:
-          type: boolean
-    SearchCustomersResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        totalItems:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
     CustomerVehicle:
       type: object
       properties:
@@ -204,26 +177,37 @@ components:
           type: string
         interiorColor:
           type: string
-    CustomerAddress:
+    SearchCustomersResponse:
       type: object
       properties:
-        addressLine1:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+    CustomerPhone:
+      type: object
+      properties:
+        number:
           type: string
-        addressLine2:
+        phoneType:
           type: string
-        city:
+        preferredTimeToContact:
           type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        county:
-          type: string
-        doNotMail:
+        doNotCall:
           type: boolean
-        isPreferred:
+        doNotText:
+          type: boolean
+        preferCall:
+          type: boolean
+        preferText:
           type: boolean
     Customer:
       type: object
@@ -260,22 +244,38 @@ components:
             $ref: '#/components/schemas/CustomerPhone'
         address:
           $ref: '#/components/schemas/CustomerAddress'
-  parameters:
-    CustomerId:
-      name: customerId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-    RequestId:
-      name: Request-Id
-      in: header
-      required: true
-      description: GUID correlation id echoed back on the response.
-      schema:
-        type: string
-        format: uuid
+    CustomerAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        county:
+          type: string
+        doNotMail:
+          type: boolean
+        isPreferred:
+          type: boolean
+    CustomerEmail:
+      type: object
+      properties:
+        address:
+          type: string
+        emailType:
+          type: string
+        doNotEmail:
+          type: boolean
+        isPreferred:
+          type: boolean
   securitySchemes:
     fortellisClientId:
       type: apiKey
