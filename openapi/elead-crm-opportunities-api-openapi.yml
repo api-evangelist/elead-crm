@@ -177,6 +177,43 @@ paths:
                     format: uuid
 components:
   schemas:
+    VehicleTradeIn:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        year:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        vin:
+          type: string
+        estimatedMileage:
+          type: integer
+        interiorColor:
+          type: string
+        exteriorColor:
+          type: string
+    SearchOpportunitiesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Opportunity'
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
     Opportunity:
       type: object
       properties:
@@ -237,56 +274,19 @@ components:
           type: string
         isPrimary:
           type: boolean
-    SearchOpportunitiesResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Opportunity'
-        totalItems:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-    VehicleTradeIn:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        year:
-          type: integer
-        make:
-          type: string
-        model:
-          type: string
-        trim:
-          type: string
-        vin:
-          type: string
-        estimatedMileage:
-          type: integer
-        interiorColor:
-          type: string
-        exteriorColor:
-          type: string
   parameters:
-    OpportunityId:
-      name: opportunityId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
     RequestId:
       name: Request-Id
       in: header
       required: true
       description: GUID correlation id echoed back on the response.
+      schema:
+        type: string
+        format: uuid
+    OpportunityId:
+      name: opportunityId
+      in: path
+      required: true
       schema:
         type: string
         format: uuid

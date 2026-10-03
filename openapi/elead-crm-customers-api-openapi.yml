@@ -139,6 +139,13 @@ paths:
                   $ref: '#/components/schemas/CustomerVehicle'
 components:
   parameters:
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
     RequestId:
       name: Request-Id
       in: header
@@ -147,36 +154,7 @@ components:
       schema:
         type: string
         format: uuid
-    CustomerId:
-      name: customerId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
-    CustomerVehicle:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        year:
-          type: integer
-        make:
-          type: string
-        model:
-          type: string
-        trim:
-          type: string
-        vin:
-          type: string
-        mileage:
-          type: integer
-        exteriorColor:
-          type: string
-        interiorColor:
-          type: string
     SearchCustomersResponse:
       type: object
       properties:
@@ -192,6 +170,27 @@ components:
           type: integer
         pageSize:
           type: integer
+    CustomerAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        county:
+          type: string
+        doNotMail:
+          type: boolean
+        isPreferred:
+          type: boolean
     CustomerPhone:
       type: object
       properties:
@@ -244,27 +243,6 @@ components:
             $ref: '#/components/schemas/CustomerPhone'
         address:
           $ref: '#/components/schemas/CustomerAddress'
-    CustomerAddress:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        county:
-          type: string
-        doNotMail:
-          type: boolean
-        isPreferred:
-          type: boolean
     CustomerEmail:
       type: object
       properties:
@@ -276,6 +254,28 @@ components:
           type: boolean
         isPreferred:
           type: boolean
+    CustomerVehicle:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        year:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        vin:
+          type: string
+        mileage:
+          type: integer
+        exteriorColor:
+          type: string
+        interiorColor:
+          type: string
   securitySchemes:
     fortellisClientId:
       type: apiKey
