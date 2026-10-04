@@ -155,59 +155,6 @@ components:
         type: string
         format: uuid
   schemas:
-    SearchCustomersResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        totalItems:
-          type: integer
-        totalPages:
-          type: integer
-        pageNumber:
-          type: integer
-        pageSize:
-          type: integer
-    CustomerAddress:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        county:
-          type: string
-        doNotMail:
-          type: boolean
-        isPreferred:
-          type: boolean
-    CustomerPhone:
-      type: object
-      properties:
-        number:
-          type: string
-        phoneType:
-          type: string
-        preferredTimeToContact:
-          type: string
-        doNotCall:
-          type: boolean
-        doNotText:
-          type: boolean
-        preferCall:
-          type: boolean
-        preferText:
-          type: boolean
     Customer:
       type: object
       properties:
@@ -276,6 +223,59 @@ components:
           type: string
         interiorColor:
           type: string
+    CustomerAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        county:
+          type: string
+        doNotMail:
+          type: boolean
+        isPreferred:
+          type: boolean
+    CustomerPhone:
+      type: object
+      properties:
+        number:
+          type: string
+        phoneType:
+          type: string
+        preferredTimeToContact:
+          type: string
+        doNotCall:
+          type: boolean
+        doNotText:
+          type: boolean
+        preferCall:
+          type: boolean
+        preferText:
+          type: boolean
+    SearchCustomersResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
   securitySchemes:
     fortellisClientId:
       type: apiKey
