@@ -138,23 +138,67 @@ paths:
                 items:
                   $ref: '#/components/schemas/CustomerVehicle'
 components:
-  parameters:
-    CustomerId:
-      name: customerId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-    RequestId:
-      name: Request-Id
-      in: header
-      required: true
-      description: GUID correlation id echoed back on the response.
-      schema:
-        type: string
-        format: uuid
   schemas:
+    CustomerAddress:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+        county:
+          type: string
+        doNotMail:
+          type: boolean
+        isPreferred:
+          type: boolean
+    CustomerVehicle:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        year:
+          type: integer
+        make:
+          type: string
+        model:
+          type: string
+        trim:
+          type: string
+        vin:
+          type: string
+        mileage:
+          type: integer
+        exteriorColor:
+          type: string
+        interiorColor:
+          type: string
+    CustomerPhone:
+      type: object
+      properties:
+        number:
+          type: string
+        phoneType:
+          type: string
+        preferredTimeToContact:
+          type: string
+        doNotCall:
+          type: boolean
+        doNotText:
+          type: boolean
+        preferCall:
+          type: boolean
+        preferText:
+          type: boolean
     Customer:
       type: object
       properties:
@@ -190,77 +234,6 @@ components:
             $ref: '#/components/schemas/CustomerPhone'
         address:
           $ref: '#/components/schemas/CustomerAddress'
-    CustomerEmail:
-      type: object
-      properties:
-        address:
-          type: string
-        emailType:
-          type: string
-        doNotEmail:
-          type: boolean
-        isPreferred:
-          type: boolean
-    CustomerVehicle:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        year:
-          type: integer
-        make:
-          type: string
-        model:
-          type: string
-        trim:
-          type: string
-        vin:
-          type: string
-        mileage:
-          type: integer
-        exteriorColor:
-          type: string
-        interiorColor:
-          type: string
-    CustomerAddress:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-        county:
-          type: string
-        doNotMail:
-          type: boolean
-        isPreferred:
-          type: boolean
-    CustomerPhone:
-      type: object
-      properties:
-        number:
-          type: string
-        phoneType:
-          type: string
-        preferredTimeToContact:
-          type: string
-        doNotCall:
-          type: boolean
-        doNotText:
-          type: boolean
-        preferCall:
-          type: boolean
-        preferText:
-          type: boolean
     SearchCustomersResponse:
       type: object
       properties:
@@ -276,6 +249,33 @@ components:
           type: integer
         pageSize:
           type: integer
+    CustomerEmail:
+      type: object
+      properties:
+        address:
+          type: string
+        emailType:
+          type: string
+        doNotEmail:
+          type: boolean
+        isPreferred:
+          type: boolean
+  parameters:
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      description: GUID correlation id echoed back on the response.
+      schema:
+        type: string
+        format: uuid
+    CustomerId:
+      name: customerId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     fortellisClientId:
       type: apiKey
