@@ -1,4 +1,4 @@
-# Elead (elead-crm)
+# Elead
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,83 +64,121 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Elead (eLEAD / Elead CRM) is an automotive dealership CRM for sales, BDC, and service, now part of CDK Global. Elead exposes a set of **partner-gated Vehicle Sales REST APIs** - Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data - published through the **CDK Fortellis Automotive Commerce Exchange**. The APIs let certified software providers and dealers search and manage prospects/customers, sales opportunities (leads), vehicles of interest and trade-ins, sales teams, and activities inside Elead CRM.
+Elead (eLEAD / Elead CRM) is an automotive dealership CRM for sales, BDC, and service, now part of CDK Global. Elead exposes a set of partner-gated Vehicle Sales REST APIs - Sales Opportunities, Sales Customers, Sales Activities, and Product Reference Data - published through the CDK Fortellis Automotive Commerce Exchange. The APIs let certified software providers and dealers search and manage prospects/customers, sales opportunities (leads), vehicles of interest and trade-ins, sales teams, and activities inside Elead CRM. Access is not open self-service - developers must be Fortellis users, create a Fortellis solution to obtain client credentials, and have the dealer activate the subscription. There is no public WebSocket API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/elead-crm/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/elead-crm/refs/heads/main/apis.yml)
+**Areas:** CRM · Automotive · Dealership · Sales · Leads · Fortellis · CDK Global
 
-## Access Model (Important)
+## Elead on APIs.io
 
-This is **not an open, self-service API**. Access is partner/certification-gated through Fortellis:
+Everything profiled for Elead is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/elead-crm/](https://apis.io/providers/elead-crm/)** — or go straight to one of the APIs or properties below.
 
-1. Register as a Fortellis user and create a Fortellis **solution** to generate `client_id` and `client_secret`.
-2. A **dealership activates a subscription** for your app against their Elead CRM instance, which supplies the per-dealer `Subscription-Id`.
-3. Every request carries `client_id`, `client_secret`, `Subscription-Id`, and a `Request-Id` correlation header.
+### APIs (4)
 
-There is no public free tier or self-serve production signup, and pricing is handled through CDK/Fortellis partner agreements (contact sales). There is **no public WebSocket API** - all surfaces are request/response REST over HTTPS on the Fortellis gateway (`https://api.fortellis.io`) under the `/sales/v1/elead` path prefix.
+- [Elead Activities API](https://apis.io/apis/elead-crm/elead-crm-activities-api/) — Sales activities, appointments, and activity history. Endpoints modeled.
+- [Elead Customers API](https://apis.io/apis/elead-crm/elead-crm-customers-api/) — Prospect and customer records and their owned vehicles.
+- [Elead Opportunities API](https://apis.io/apis/elead-crm/elead-crm-opportunities-api/) — Sales opportunities (leads), vehicles of interest, trade-ins, sales team, emails.
+- [Elead Reference Data API](https://apis.io/apis/elead-crm/elead-crm-reference-data-api/) — Lookup data supporting the other Vehicle Sales APIs.
 
-## Tags
+### Published properties
 
-- CRM
-- Automotive
-- Dealership
-- Sales
-- Leads
-- Fortellis
-- CDK Global
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### Agentic access (1)
 
-- **Created:** 2026-07-10
-- **Modified:** 2026-07-10
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## APIs
+- [Elead Crm Agentic Access](https://apis.io/agentic-access/elead-crm/elead-crm-agentic-access/)
 
-### Elead Sales Opportunities API
+#### Collections (4)
 
-Search and retrieve existing sales opportunities (leads) by date range, delta date, or customer Id, and create new opportunities for existing customers. Manage vehicles of interest and trade-ins, add comments, reassign the primary salesperson or BDC agent, add/remove sales-team members, update sub-status and sales steps, and send emails that log a corresponding activity.
+Postman and Open Collection request collections.
 
-- **Documentation:** [Elead Sales Opportunities connector](https://learn.microsoft.com/en-us/connectors/cdkeleadsalesopportunities/)
-- **API Reference:** [Fortellis spec](https://apidocs.fortellis.io/specs/3c6d6b40-7215-4a81-a087-4f956bb36ec9)
-- **Base URL:** `https://api.fortellis.io/sales/v1/elead`
+- [Elead Vehicle Sales APIs Activities API](https://apis.io/collections/elead-crm/open-elead-crm-activities-api/)
+- [Elead Vehicle Sales APIs Activities Customers API](https://apis.io/collections/elead-crm/open-elead-crm-customers-api/)
+- [Elead Vehicle Sales APIs Activities Opportunities API](https://apis.io/collections/elead-crm/open-elead-crm-opportunities-api/)
+- [Elead Vehicle Sales APIs Activities Reference Data API](https://apis.io/collections/elead-crm/open-elead-crm-reference-data-api/)
 
-### Elead Sales Customers API
+#### Security (2)
 
-Manage prospect and customer records inside Elead CRM. Create a customer (returning the Elead customer Id), update contact details, retrieve a customer by Id, search by first name, last name, phone number, or email address, and retrieve a customer's owned vehicles.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Documentation:** [Elead Sales Customers connector](https://learn.microsoft.com/en-us/connectors/cdkeleadsalescustomers/)
-- **API Reference:** [Fortellis spec](https://apidocs.fortellis.io/specs/ba092364-accc-4ad9-865f-fac51c34cdb1)
-- **Base URL:** `https://api.fortellis.io/sales/v1/elead`
+- [Elead Crm Authentication](https://apis.io/security/elead-crm/elead-crm-authentication/)
+- [Elead Crm Domain Security](https://apis.io/security/elead-crm/elead-crm-domain-security/)
 
-### Elead Sales Activities API
+#### Plans and pricing (1)
 
-Create scheduled and completed sales activities (including emails and appointments) tied to an opportunity, complete activities and record outcomes, and query sales-activity history with comments. **Endpoints for this API are modeled** from CDK/Elead product descriptions rather than a confirmed public reference - see `review.yml` (`endpointsModeled`).
+Published plans, tiers and prices.
 
-- **Documentation:** [CDK CRM API overview](https://www2.cdkglobal.com/api-solutions-crm)
-- **API Reference:** [Fortellis API directory](https://apidocs.fortellis.io/)
-- **Base URL:** `https://api.fortellis.io/sales/v1/elead`
+- [Elead Crm Plans Pricing](https://apis.io/plans/elead-crm/elead-crm-plans-pricing/)
 
-### Elead Product Reference Data API
+#### Rate limits (1)
 
-Helper API that provides reference/lookup data for the other Vehicle Sales APIs - opportunity sources and sub-sources by company and up type, opportunity statuses, sales steps, employee positions, employees by position, sender ("from") email addresses, and a vehicle catalog of classes, years, makes, models, and trims.
+Published request limits.
 
-- **Documentation:** [Elead Product Reference Data connector](https://learn.microsoft.com/en-us/connectors/cdkeleadproductreferencedata/)
-- **API Reference:** [Fortellis spec](https://apidocs.fortellis.io/specs/8bbbe60f-b382-4315-8d19-ba48a64b2ab3)
-- **Base URL:** `https://api.fortellis.io/sales/v1/elead`
+- [Elead Crm Rate Limits](https://apis.io/rate-limits/elead-crm/elead-crm-rate-limits/)
 
-## Artifacts
+#### FinOps (1)
 
-- [OpenAPI](openapi/elead-crm-openapi.yml) — documented Opportunities / Customers / Reference Data operations, with Activities operations flagged `x-endpoints-modeled`.
-- [Plans](plans/elead-crm-plans-pricing.yml) — partner/contact-sales access model.
-- [Rate Limits](rate-limits/elead-crm-rate-limits.yml) — 100 calls / 60s per connection (per CDK connector metadata).
-- [FinOps](finops/elead-crm-finops.yml) — contract/partner-agreement cost view.
+What the API costs to run, by operation.
 
-## Common Properties
+- [Elead Crm Finops](https://apis.io/finops/elead-crm/elead-crm-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.eleadcrm.com)
-- [LinkedIn](https://www.linkedin.com/company/cdk-global)
 - [Documentation](https://apidocs.fortellis.io/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 45.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/elead-crm/](https://apis.io/providers/elead-crm/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Elead: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/elead-crm/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
